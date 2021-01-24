@@ -62,7 +62,6 @@ function gen_robot() {
     torso.add(right_upper_leg);
    
 
-
     robot.name = "robot";
 
     return robot
