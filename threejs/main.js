@@ -1,6 +1,14 @@
 // Rotation around point logic
 // Based on https://stackoverflow.com/questions/42812861/three-js-pivot-point/42866733#42866733
 
+// ATENÇÃO: PARA FAZER A TRANSIÇÃO DE ANIMAÇÃO É PRECISO PRESSIONAR A TECLA 0
+// 1 - WAVEANIMATION
+// 2 - ZANGADO
+// 3 - GARGALHAR
+
+
+
+
 THREE.Object3D.prototype.savePosition = function() {
     return function () {
         this.__position = this.position.clone(); 
@@ -94,22 +102,27 @@ function onWindowResize() {
     
 }
 
+document.addEventListener("keydown", onDocumentKeyDown, false);
 function onDocumentKeyDown(event) {
-    // One for Hand wave, Two for your Custom Animation #2 and Three - Your Custom Animation #3
-    // For now, only works for Handwave
-    
-    console.log(event.key);
-    key = parseInt(event.key);
-
-    animations = {
-        1 : WaveAnimation,
-        2 : false,
-        3 : false,
-    };
-
-    // Run selected animation
-    animation = new animations[1]();
-    animation.run()
-}
+    var keyCode = event.which;
+    console.log(keyCode);
+    if (keyCode == 49){ 
+        animation = new WaveAnimation();
+        animation.run()    
+    }
+    else if(keyCode == 50 ){
+        animation = new Zangado();
+        animation.run()      
+    }
+    else if(keyCode == 51 ){
+        animation = new Gargalhar();
+        animation.run()        
+    }
+    //Recarrega a cena, CLICANDO 0
+    else if(keyCod == 48){
+        document.location.reload(true);
+    } 
+};
 
 init();
+
