@@ -19,9 +19,9 @@ function gen_robot() {
     var left_upper_arm = gen_rect(1.5, 4);
     left_upper_arm.name = "left_upper_arm";
     var left_lower_arm = gen_rect(1, 3);
-    left_lower_arm.name = "left_lower_arm";
+    left_lower_arm.name = "lower_arm";
     var left_hand = gen_rect(1.5,0.5);
-    left_hand.name = "left_hand";
+    left_hand.name = "hand";
     left_upper_arm.add(left_lower_arm);
     left_lower_arm.add(left_hand);
     left_hand.position.y = -1.5;
@@ -29,18 +29,10 @@ function gen_robot() {
     left_upper_arm.position.x = -2.6;
 
     // right: upper arm, arm, hand
-    var right_upper_arm = gen_rect(1.5, 4);  
+    var right_upper_arm = left_upper_arm.clone();  
     right_upper_arm.name = "right_upper_arm";
-    var right_lower_arm = gen_rect(1, 3)
-    right_lower_arm = "right_lower_arm"
-    var right_hand = gen_rect(1.5,0.5);
-    right_upper_arm.add(right_lower_arm);
-    right_lower_arm.add(right_hand);
-    right_hand.position.y = 1.5;
-    right_lower_arm.position.y = 3;
     right_upper_arm.position.x = 2.6;
-
-
+    
 
     // left: upper leg, leg, foot
     var left_upper_leg = gen_rect(1.5, 5);
@@ -59,16 +51,7 @@ function gen_robot() {
     // right: upper leg, leg, foot
     var right_upper_leg = left_upper_leg.clone();
     right_upper_leg.name = "right_upper_leg";
-    var right_lower_leg = left_lower_leg.clone();
-    right_lower_leg = "right_lower_leg"
-    var right_foot = left_foot.clone();
-    right_foot = "right_foot"
-    right_upper_leg.add(right_lower_leg);
-    right_lower_leg.add(right_foot);
-    right_foot.position.y = 1.5;
-    right_lower_leg.position.y = 4; 
     right_upper_leg.position.x = 1;
-    right_upper_leg.position.y = 5;
 
     // Creating hieararchy
     robot.add(torso);
@@ -78,7 +61,6 @@ function gen_robot() {
     torso.add(left_upper_leg);
     torso.add(right_upper_leg);
    
-
 
     robot.name = "robot";
 
