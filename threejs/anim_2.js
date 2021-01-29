@@ -1,8 +1,6 @@
+function Zangado() {}
 
-
-function WaveAnimation() {}
-
-Object.assign( WaveAnimation.prototype, {
+Object.assign( Zangado.prototype, {
 
     init: function() {
 
@@ -65,7 +63,6 @@ Object.assign( WaveAnimation.prototype, {
         this.animate(0);
     }
 });
-
 
 
 
