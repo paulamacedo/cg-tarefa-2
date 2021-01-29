@@ -106,20 +106,20 @@ document.addEventListener("keydown", onDocumentKeyDown, false);
 function onDocumentKeyDown(event) {
     var keyCode = event.which;
     console.log(keyCode);
-    if (keyCode == 49){ 
+    if (keyCode == 49 || keyCode == 97){ 
         animation = new WaveAnimation();
         animation.run()    
     }
-    else if(keyCode == 50 ){
+    else if(keyCode == 50 || keyCode == 98){
         animation = new Zangado();
         animation.run()      
     }
-    else if(keyCode == 51 ){
+    else if(keyCode == 51 || keyCode == 99){
         animation = new Gargalhar();
         animation.run()        
     }
     //Recarrega a cena, CLICANDO 0
-    else if(keyCod == 48){
+    else if(keyCode == 48 || keyCode == 96){
         document.location.reload(true);
     } 
 };
