@@ -4,15 +4,15 @@
 // ATENÇÃO: PARA FAZER A TRANSIÇÃO DE ANIMAÇÃO É PRECISO PRESSIONAR A TECLA 0
 // 1 - WAVEANIMATION
 // 2 - ZANGADO
-// 3 - GARGALHAR
+// 3 - Bailarina
 
-	/*
+/*
 	Segunda Tarefa Prática - Computação Gráfica I 
 	Alunos: Pedro Paulo Soares  Dre: 114153450
 		Paula Macedo 	Dre: 113049909
 	Professor: João Vitor de Oliveira Silva
 	
-	*/
+*/
 
 
 THREE.Object3D.prototype.savePosition = function() {
