@@ -6,7 +6,13 @@
 // 2 - ZANGADO
 // 3 - GARGALHAR
 
-
+	/*
+	Segunda Tarefa Prática - Computação Gráfica I 
+	Alunos: Pedro Paulo Soares  Dre: 114153450
+		Paula Macedo 	Dre: 113049909
+	Professor: João Vitor de Oliveira Silva
+	
+	*/
 
 
 THREE.Object3D.prototype.savePosition = function() {
@@ -115,7 +121,7 @@ function onDocumentKeyDown(event) {
         animation.run()      
     }
     else if(keyCode == 51 || keyCode == 99){
-        animation = new Gargalhar();
+        animation = new Bailarina();
         animation.run()        
     }
     //Recarrega a cena, CLICANDO 0
