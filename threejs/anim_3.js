@@ -1,7 +1,17 @@
-function Gargalhar() {}
 
-Object.assign( Gargalhar.prototype, {
+	/*
+	Segunda Tarefa Prática - Computação Gráfica I 
+	Alunos: Pedro Paulo Soares  Dre: 114153450
+		Paula Macedo 	Dre: 113049909
+	Professor: João Vitor de Oliveira Silva
+	
+	*/
 
+function Bailarina() {}
+
+Object.assign( Bailarina.prototype, {
+
+    //Movimento Assemble da Bailarina
     init: function() {
 
         function upperArmTween(arm, negative){
@@ -30,7 +40,7 @@ Object.assign( Gargalhar.prototype, {
 
         function headTween(){
             return new TWEEN.Tween( {y:4.8} )
-                .to( {y:5.2}, 500)
+                .to( {y:5.0}, 500)
                 .onUpdate(function(){
                     let head = robot.getObjectByName('head');
                     head.matrix.makeTranslation(0,this._object.y,0);
@@ -39,6 +49,31 @@ Object.assign( Gargalhar.prototype, {
                     renderer.render(scene, camera);    
                 })
         }
+        let upperLegTween = new TWEEN.Tween( {theta:0} )
+        .to( {theta:Math.PI/6}, 500) //Alterado o theta dado pelo trabalho para pi/2
+        .onUpdate(function(){
+            
+            let right_upper_leg = robot.getObjectByName("right_upper_leg");
+            right_upper_leg.matrix.makeRotationZ(this._object.theta).premultiply( new THREE.Matrix4().makeTranslation( 1.8, - 4.8, 0 ) );
+            // Updating final world matrix (with parent transforms) - mandatory
+            right_upper_leg.updateMatrixWorld(true);
+            // Updating screen
+            stats.update();
+            renderer.render(scene, camera);    
+        })
+
+        let lowerLegTween = new TWEEN.Tween( {theta:0} )
+        .to( {theta:- Math.PI/2}, 500) //Alterado o theta dado pelo trabalho para pi/2
+        .onUpdate(function(){
+            
+            let right_lower_leg = robot.getObjectByName("right_upper_leg").children[0];
+            right_lower_leg.matrix.makeRotationZ(this._object.theta).premultiply( new THREE.Matrix4().makeTranslation(-2, -1.8, 0 ) );
+            // Updating final world matrix (with parent transforms) - mandatory
+            right_lower_leg.updateMatrixWorld(true);
+            // Updating screen
+            stats.update();
+            renderer.render(scene, camera);    
+        })
        
         let right_upper_arm = upperArmTween('right_upper_arm', false);
         let right_lower_arm = lowerArmTween('right_upper_arm', true);
@@ -48,14 +83,17 @@ Object.assign( Gargalhar.prototype, {
 
         right_upper_arm.chain(right_lower_arm);
         left_upper_arm.chain(left_lower_arm);
-        hd.repeat(10);
+        hd.repeat(5);
         
         right_upper_arm.start()
         left_upper_arm.start()
         hd.start();
 
+        upperLegTween.chain(lowerLegTween);
+        upperLegTween.start();
+        upperLegTween.repeat(5);
   
-       
+        
     },
     animate: function(time) {
         window.requestAnimationFrame(this.animate.bind(this));
@@ -66,4 +104,3 @@ Object.assign( Gargalhar.prototype, {
         this.animate(0);
     }
 });
-
